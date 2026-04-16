@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Todas las Cremas | Innovación & IRL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --accent: #e0fbfc; /* Un celeste eléctrico suave */
+            --cream: #fdfaf5;
+            --text-main: #ffffff;
+            --glass: rgba(255, 255, 255, 0.05);
+        }
+
+        * { box-sizing: border-box; }
+        body, html { 
+            margin: 0; padding: 0; width: 100%; height: 100%; 
+            font-family: 'Space Grotesk', sans-serif; 
+            background-color: var(--bg); 
+            color: var(--text-main); 
+            overflow: hidden; 
+            touch-action: none; 
+        }
+
+        .slider-container { width: 100%; height: 100%; overflow: hidden; position: relative; }
+        .slider { display: flex; width: 600%; height: 100%; transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1); }
+
+        section { 
+            width: 16.666%; height: 100%; 
+            display: flex; flex-direction: column; 
+            position: relative;
+        }
+
+        /* Capa de diseño */
+        .content {
+            padding: 10vh 8% 5vh 8%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            z-index: 2;
+        }
+
+        /* Tipografías de Agencia */
+        h1 { font-family: 'Syne', sans-serif; font-size: 3.5rem; line-height: 0.9; text-transform: uppercase; margin: 0; font-weight: 800; }
+        h2 { font-family: 'Syne', sans-serif; font-size: 1.8rem; color: var(--accent); margin-bottom: 20px; text-transform: uppercase; }
+        p { font-size: 1.1rem; line-height: 1.5; max-width: 500px; opacity: 0.9; font-weight: 300; }
+        
+        .highlight { color: var(--accent); }
+
+        /* Estilos de las cajas de servicios (IA & LOW CODE) */
+        .service-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .service-card {
+            background: var(--glass);
+            padding: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 5px;
+        }
+        .service-card h4 { margin: 0 0 10px 0; color: var(--accent); font-size: 0.9rem; text-transform: uppercase; }
+        .service-card ul { padding: 0; margin: 0; list-style: none; font-size: 0.85rem; opacity: 0.8; }
+
+        /* Botón de WhatsApp Estilo Tech */
+        .btn-wa {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 15px 30px;
+            background: var(--accent);
+            color: var(--bg);
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            width: fit-content;
+            transition: 0.3s;
+        }
+
+        /* Navegación Visual */
+        .nav-hint {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            opacity: 0.4;
+            z-index: 10;
+        }
+
+        /* Fondo Decorativo */
+        .bg-number {
+            position: absolute;
+            bottom: -50px;
+            right: -20px;
+            font-size: 25rem;
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            opacity: 0.03;
+            z-index: 1;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            .service-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="nav-hint">Desliza para explorar →</div>
+
+    <div class="slider-container">
+        <div class="slider" id="slider">
+            
+            <section>
+                <div class="content">
+                    <p style="letter-spacing: 5px; color: var(--accent); margin-bottom: 10px;">AGENCIA DE INNOVACIÓN & IRL</p>
+                    <h1>Todas las<br>Cremas</h1>
+                    <p style="margin-top: 20px;">La publicidad ya no es publicidad. Es emoción. Es entretenimiento. <span class="highlight">Es innovación.</span></p>
+                </div>
+                <div class="bg-number">01</div>
+            </section>
+
+            <section>
+                <div class="content">
+                    <h2>Nuestra Filosofía</h2>
+                    <p>Creamos eventos inolvidables. Momentos que se convierten en contenido visual de alto impacto.</p>
+                    <p>Ideas y campañas que transforman a las empresas y las marcas <span class="highlight">de adentro hacia afuera.</span></p>
+                </div>
+                <div class="bg-number">02</div>
+            </section>
+
+            <section>
+                <div class="content">
+                    <h2>Experiencias IRL</h2>
+                    <p>Implementamos las acciones de <span class="highlight">BTL e innovación</span> que tu marca necesita para conectar en el mundo real.</p>
+                    <p>Desde activaciones masivas hasta experiencias boutique diseñadas para ser virales.</p>
+                </div>
+                <div class="bg-number">03</div>
+            </section>
+
+            <section>
+                <div class="content">
+                    <h2>IA & Low Code</h2>
+                    <p>Desarrollamos apps y plataformas web a la medida de tu negocio.</p>
+                    <div class="service-grid">
+                        <div class="service-card">
+                            <h4>Automatización</h4>
+                            <ul>
+                                <li>Reportes Inteligentes</li>
+                                <li>Chatbots de Negocio</li>
+                                <li>Procesamiento de Planillas</li>
+                            </ul>
+                        </div>
+                        <div class="service-card">
+                            <h4>Mini SaaS</h4>
+                            <ul>
+                                <li>Herramientas IA nicho</li>
+                                <li>Automatización de correos</li>
+                                <li>Dashboards a medida</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-number">04</div>
+            </section>
+
+            <section>
+                <div class="content">
+                    <h2>Nuestros Planes</h2>
+                    <div class="service-grid">
+                        <div class="service-card" style="border-color: var(--accent);">
+                            <h4 style="color: var(--accent);">LANDING PAGE</h4>
+                            <ul>
+                                <li>1 Página impacto total</li>
+                                <li>Botón de Whatsapp</li>
+                                <li>Galería de proyectos</li>
+                            </ul>
+                        </div>
+                        <div class="service-card">
+                            <h4>SITIO WEB</h4>
+                            <ul>
+                                <li>3 Secciones dinámicas</li>
+                                <li>Galería Pro</li>
+                                <li>Arquitectura de marca</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-number">05</div>
+            </section>
+
+            <section>
+                <div class="content">
+                    <h1>¿Hacemos<br>algo real?</h1>
+                    <p style="margin-top: 20px;">Lleva tu marca al siguiente nivel con tecnología y experiencias que emocionan.</p>
+                    <a href="https://wa.me/tu-numero" class="btn-wa">Iniciar Proyecto</a>
+                </div>
+                <div class="bg-number">06</div>
+            </section>
+
+        </div>
+    </div>
+
+    <script>
+        let currentIdx = 0;
+        const slider = document.getElementById('slider');
+
+        function moveSlide(dir) {
+            currentIdx = Math.max(0, Math.min(currentIdx + dir, 5));
+            slider.style.transform = `translateX(-${(currentIdx * 100) / 6}%)`;
+        }
+
+        let startX = 0;
+        document.addEventListener('touchstart', e => startX = e.touches[0].clientX);
+        document.addEventListener('touchend', e => {
+            let endX = e.changedTouches[0].clientX;
+            if (startX - endX > 50) moveSlide(1);
+            if (endX - startX > 50) moveSlide(-1);
+        });
+
+        document.addEventListener('keydown', e => {
+            if (e.key === "ArrowRight") moveSlide(1);
+            if (e.key === "ArrowLeft") moveSlide(-1);
+        });
+    </script>
+</body>
+</html>
