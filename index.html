@@ -3,250 +3,182 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todas las Cremas | Agencia de Innovación e IRL</title>
+    <title>Todas las Cremas | Innovation Agency</title>
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@800&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg: #000000;
             --text: #ffffff;
-            --neon: #00ff66; /* Verde Dopamina */
-            --accent: #ff00ff; /* Rosa Eléctrico */
+            --neon: #00ff66;
+            --gray: #888;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; overflow-x: hidden; }
-
-        /* --- HERO SECTION --- */
-        .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 50px 5%;
-            position: relative;
+        body { 
+            background: var(--bg); 
+            color: var(--text); 
+            font-family: 'Inter', sans-serif; 
+            line-height: 1.2;
         }
 
-        .hero h1 {
-            font-family: 'Syne', sans-serif;
-            font-size: clamp(3.5rem, 12vw, 10rem);
-            line-height: 0.8;
-            text-transform: uppercase;
-            z-index: 10;
-        }
-
-        .hero .subtitle {
-            font-size: 1.2rem;
-            letter-spacing: 5px;
-            color: var(--neon);
-            text-transform: uppercase;
-            margin-bottom: 20px;
-            z-index: 10;
-        }
-
-        /* --- CARRUSEL DINÁMICO (EL MOTOR VISUAL) --- */
-        .visual-container {
-            position: absolute;
-            top: 10%;
-            right: 5%;
-            width: 45vw;
-            height: 60vh;
-            border: 2px solid var(--text);
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .carousel-track {
-            display: flex;
-            height: 100%;
-            animation: slideImages 20s infinite steps(1);
-        }
-
-        .carousel-track img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            flex-shrink: 0;
-            filter: grayscale(0.5) contrast(1.2);
-        }
-
-        @keyframes slideImages {
-            0% { transform: translateX(0%); }
-            16.6% { transform: translateX(-100%); }
-            33.3% { transform: translateX(-200%); }
-            50% { transform: translateX(-300%); }
-            66.6% { transform: translateX(-400%); }
-            83.3% { transform: translateX(-500%); }
-        }
-
-        /* --- MANIFIESTO SCROLL --- */
-        .manifesto { padding: 100px 5%; }
-        .scroll-phrase {
-            font-family: 'Syne', sans-serif;
-            font-size: clamp(2.5rem, 8vw, 6rem);
-            text-transform: uppercase;
-            line-height: 0.9;
-            margin-bottom: 60px;
-            opacity: 0.1;
-            transition: 0.8s;
-        }
-        .scroll-phrase.active { opacity: 1; transform: scale(1.05); }
-
-        .philosophy-text {
-            font-size: clamp(1.2rem, 3vw, 2rem);
-            max-width: 800px;
-            line-height: 1.3;
-            margin: 100px 0;
-            color: #888;
-        }
-
-        /* --- INNOVATION PITCH --- */
-        .innovation-block {
-            padding: 100px 5%;
-            background: var(--neon);
-            color: black;
-        }
-
-        .pitch-phrase {
-            font-family: 'Syne', sans-serif;
-            font-size: clamp(2rem, 5vw, 4rem);
-            line-height: 1;
-            text-transform: uppercase;
-            margin-bottom: 40px;
-        }
-
-        /* --- SERVICES BENTO GRID --- */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            gap: 15px;
-            padding: 50px 5%;
-        }
-
-        .card {
-            background: #111;
-            border: 1px solid #333;
-            padding: 40px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .card h3 { font-family: 'Syne', sans-serif; font-size: 1.8rem; text-transform: uppercase; margin-bottom: 20px; color: var(--neon); }
-        .card p { font-size: 1rem; line-height: 1.4; opacity: 0.7; }
-        .card .price { margin-top: 20px; font-weight: 900; color: white; }
-
-        .full { grid-column: span 12; }
-        .half { grid-column: span 6; }
-
-        /* --- CTA FINAL --- */
-        .cta {
-            height: 60vh;
+        /* SECCIONES */
+        section {
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
+            padding: 5% 10%;
+            border-bottom: 1px solid #222;
+        }
+
+        /* HERO - Ajustado para que entre en PC */
+        .hero { justify-content: flex-end; }
+        .hero h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(3rem, 10vw, 8rem); /* Tamaño dinámico */
+            text-transform: uppercase;
+            letter-spacing: -3px;
+            margin-bottom: 10px;
+        }
+        .hero .tagline {
+            font-size: clamp(1rem, 2vw, 1.5rem);
+            color: var(--neon);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+
+        /* MANIFIESTO - Frases que sí caben */
+        .phrase {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(2rem, 6vw, 5rem);
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+
+        .highlight-phrase { color: var(--neon); }
+
+        .philosophy {
+            font-size: clamp(1.1rem, 2.5vw, 1.8rem);
+            max-width: 900px;
+            color: var(--gray);
+            line-height: 1.4;
+            margin-top: 40px;
+            font-weight: 400;
+        }
+
+        /* BLOQUE INNOVACIÓN */
+        .innovation-pitch {
             background: white;
             color: black;
-            text-align: center;
+            padding: 100px 10%;
+        }
+        .pitch-text {
+            font-size: clamp(1.5rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 30px;
         }
 
-        .btn-wa {
-            background: black;
-            color: white;
-            padding: 25px 50px;
-            text-decoration: none;
-            font-weight: 900;
-            font-size: 1.5rem;
-            text-transform: uppercase;
-            margin-top: 30px;
+        /* GRID DE SERVICIOS - BRUTALISMO LIMPIO */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 20px;
+            padding: 80px 10%;
+        }
+
+        .card {
+            grid-column: span 6;
+            border: 2px solid white;
+            padding: 40px;
             transition: 0.3s;
         }
-        .btn-wa:hover { transform: rotate(-3deg) scale(1.1); }
+        .card:hover { background: var(--neon); color: black; border-color: var(--neon); }
+        .card h3 { font-family: 'Syne', sans-serif; font-size: 2rem; margin-bottom: 15px; text-transform: uppercase; }
+        .card p { font-size: 1rem; opacity: 0.8; }
+        .card.full { grid-column: span 12; }
+
+        /* CONTACTO */
+        .footer {
+            height: 60vh;
+            text-align: center;
+            background: var(--neon);
+            color: black;
+        }
+        .footer h2 { font-family: 'Syne', sans-serif; font-size: clamp(2.5rem, 8vw, 6rem); text-transform: uppercase; }
+        .btn-wa {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 20px 50px;
+            background: black;
+            color: white;
+            text-decoration: none;
+            font-weight: 900;
+            text-transform: uppercase;
+            font-size: 1.2rem;
+        }
 
         @media (max-width: 768px) {
-            .visual-container { width: 90vw; height: 40vh; top: 5%; right: 5%; }
-            .half { grid-column: span 12; }
+            .card { grid-column: span 12; }
+            section { padding: 10% 5%; }
         }
     </style>
 </head>
 <body>
 
     <section class="hero">
-        <div class="subtitle">Agencia de Innovación e IRL</div>
+        <p class="tagline">Agencia de Innovación e IRL</p>
         <h1>Todas<br>Las Cremas</h1>
-        
-        <div class="visual-container">
-            <div class="carousel-track">
-                <img src="https://images.unsplash.com/photo-1596743444223-997f082e568d?q=80&w=1000" alt="Ruleta 50s">
-                <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=1000" alt="Selfies Alegres">
-                <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1000" alt="Espejos">
-                <img src="https://images.unsplash.com/photo-1452621933871-dd6d0ee14a5d?q=80&w=1000" alt="Maratón">
-                <img src="https://images.unsplash.com/photo-1511886929837-354d827aae26?q=80&w=1000" alt="Futbol App">
-                <img src="https://images.unsplash.com/photo-1514525253361-b83f859b73c0?q=80&w=1000" alt="DJ Mirror">
-            </div>
-        </div>
     </section>
 
-    <section class="manifesto">
-        <div class="scroll-phrase">La publicidad ya no es publicidad.</div>
-        <div class="scroll-phrase">Es emoción.</div>
-        <div class="scroll-phrase">Es entretenimiento.</div>
-        <div class="scroll-phrase">Es innovación.</div>
-
-        <p class="philosophy-text">
+    <section>
+        <div class="phrase">La publicidad ya no es publicidad.</div>
+        <div class="phrase highlight-phrase">Es emoción.</div>
+        <div class="phrase">Es entretenimiento.</div>
+        <div class="phrase highlight-phrase">Es innovación.</div>
+        
+        <p class="philosophy">
             La emoción es lo que mueve al mundo. Los recuerdos que nos acompañan toda la vida son emociones y los hechos que las generan.
         </p>
     </section>
 
-    <section class="innovation-block">
-        <div class="pitch-phrase">
-            Existir digitalmente es asegurar que tu marca respire donde el mundo conecta. 
+    <section class="innovation-pitch">
+        <div class="pitch-text">
+            Evolucionar no es una opción, es supervivencia.
         </div>
-        <div class="pitch-phrase" style="font-weight: 400; opacity: 0.8;">
-            Automatizamos la carga operativa para blindar tu libertad creativa y escalar tu alcance sin límites.
+        <p style="font-size: 1.2rem; line-height: 1.6;">
+            Aseguramos la presencia y el alcance de tu marca en un mundo donde todos están conectados. Automatizar tareas no es solo eficiencia: es liberar tu creatividad para que tu negocio crezca mientras la tecnología trabaja por ti.
+        </p>
+    </section>
+
+    <section id="servicios">
+        <div class="grid">
+            <div class="card full">
+                <h3>Web & Low Code</h3>
+                <p>Construimos sitios con IA para asegurar tiempos de entrega récord y costos accesibles. Soluciones reales, no solo código.</p>
+            </div>
+            
+            <div class="card">
+                <h3>Landing Page</h3>
+                <p>1 Página de impacto total. Botón de WhatsApp y galería. Ideal para negocios locales.</p>
+            </div>
+
+            <div class="card">
+                <h3>Sitio Web</h3>
+                <p>3 Secciones dinámicas. Arquitectura de marca y galería pro para destacar.</p>
+            </div>
+
+            <div class="card full">
+                <h3>Automatización & SaaS</h3>
+                <p>Reportes, chatbots, procesamiento de planillas y herramientas de IA (como apps de pollas de fútbol) para nichos específicos.</p>
+            </div>
         </div>
     </section>
 
-    <section class="grid">
-        <div class="card full">
-            <h3>Web Construction (IA + Low Code)</h3>
-            <p>Usamos las herramientas más avanzadas para asegurar tiempos de espera récord y costos accesibles. No solo programamos, construimos soluciones.</p>
-        </div>
-        
-        <div class="card half">
-            <h3>Landing Page</h3>
-            <p>Ideal para negocios locales. 1 página de alto impacto, galería de fotos y botón directo a WhatsApp.</p>
-            <div class="price">Plan Esencial</div>
-        </div>
-
-        <div class="card half">
-            <h3>Sitio Web Pro</h3>
-            <p>Estructura de 3 secciones, arquitectura de marca, galería premium y estrategia de conversión.</p>
-            <div class="price">Plan Crecimiento</div>
-        </div>
-
-        <div class="card full" style="border-color: var(--neon);">
-            <h3>Automatización & Mini SaaS</h3>
-            <p>Generación de reportes, chatbots inteligentes y herramientas de IA para nichos específicos. Haz que la tecnología trabaje por ti.</p>
-        </div>
+    <section class="footer">
+        <h2>¿Hacemos algo<br>brutal?</h2>
+        <a href="https://wa.me/tu-numero-aqui" class="btn-wa">Hablemos por WhatsApp</a>
     </section>
 
-    <section class="cta">
-        <h2 style="font-family: 'Syne'; font-size: 3rem; text-transform: uppercase;">¿Hacemos algo<br>inolvidable?</h2>
-        <a href="https://wa.me/tu-numero" class="btn-wa">Conversemos</a>
-    </section>
-
-    <script>
-        // Efecto de aparición al hacer scroll
-        const phrases = document.querySelectorAll('.scroll-phrase');
-        window.addEventListener('scroll', () => {
-            phrases.forEach(p => {
-                const rect = p.getBoundingClientRect();
-                if(rect.top < window.innerHeight * 0.75) {
-                    p.classList.add('active');
-                }
-            });
-        });
-    </script>
 </body>
 </html>
