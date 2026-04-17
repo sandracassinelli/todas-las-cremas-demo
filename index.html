@@ -4,180 +4,158 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todas las Cremas | Innovation Agency</title>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@800&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@800&family=Inter:wght@400;900&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg: #000000;
             --text: #ffffff;
             --neon: #00ff66;
-            --gray: #888;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
             background: var(--bg); 
             color: var(--text); 
-            font-family: 'Inter', sans-serif; 
-            line-height: 1.2;
+            font-family: 'Syne', sans-serif; 
+            line-height: 0.9;
+            overflow-x: hidden;
         }
 
-        /* SECCIONES */
+        /* SECCIONES CONTENIDAS */
         section {
-            min-height: 100vh;
+            height: 100vh; /* Ocupa exactamente el alto de la pantalla */
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 5% 10%;
+            padding: 40px;
             border-bottom: 1px solid #222;
+            overflow: hidden; /* Evita que el texto se escape */
         }
 
-        /* HERO - Ajustado para que entre en PC */
-        .hero { justify-content: flex-end; }
-        .hero h1 {
-            font-family: 'Syne', sans-serif;
-            font-size: clamp(3rem, 10vw, 8rem); /* Tamaño dinámico */
+        /* TIPOGRAFÍA MASIVA Y COMPACTA */
+        .big-title {
+            font-size: clamp(2.5rem, 12vw, 9rem);
             text-transform: uppercase;
-            letter-spacing: -3px;
+            letter-spacing: -4px;
+            display: block;
+        }
+
+        .outline-text {
+            color: transparent;
+            -webkit-text-stroke: 1px var(--text);
+        }
+
+        .tagline-small {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: var(--neon);
             margin-bottom: 10px;
         }
-        .hero .tagline {
-            font-size: clamp(1rem, 2vw, 1.5rem);
-            color: var(--neon);
-            text-transform: uppercase;
-            letter-spacing: 4px;
-        }
 
-        /* MANIFIESTO - Frases que sí caben */
-        .phrase {
-            font-family: 'Syne', sans-serif;
-            font-size: clamp(2rem, 6vw, 5rem);
-            text-transform: uppercase;
-            margin-bottom: 20px;
-            color: var(--text);
-        }
-
-        .highlight-phrase { color: var(--neon); }
-
-        .philosophy {
-            font-size: clamp(1.1rem, 2.5vw, 1.8rem);
-            max-width: 900px;
-            color: var(--gray);
-            line-height: 1.4;
-            margin-top: 40px;
-            font-weight: 400;
-        }
-
-        /* BLOQUE INNOVACIÓN */
-        .innovation-pitch {
-            background: white;
-            color: black;
-            padding: 100px 10%;
-        }
-        .pitch-text {
-            font-size: clamp(1.5rem, 4vw, 3rem);
-            font-weight: 700;
-            margin-bottom: 30px;
-        }
-
-        /* GRID DE SERVICIOS - BRUTALISMO LIMPIO */
-        .grid {
+        /* BLOQUES DE TEXTO RELLENOS */
+        .text-wall {
             display: grid;
-            grid-template-columns: repeat(12, 1fr);
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+
+        .philosophy-block {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(1rem, 2vw, 1.4rem);
+            line-height: 1.2;
+            text-transform: none;
+            max-width: 700px;
+            margin-top: 20px;
+            font-weight: 300;
+            color: #ccc;
+        }
+
+        /* SERVICIOS ESTILO BRUTALISTA */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
             gap: 20px;
-            padding: 80px 10%;
+            height: 70%;
         }
 
-        .card {
-            grid-column: span 6;
-            border: 2px solid white;
-            padding: 40px;
-            transition: 0.3s;
+        .service-item {
+            border: 1px solid var(--text);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
-        .card:hover { background: var(--neon); color: black; border-color: var(--neon); }
-        .card h3 { font-family: 'Syne', sans-serif; font-size: 2rem; margin-bottom: 15px; text-transform: uppercase; }
-        .card p { font-size: 1rem; opacity: 0.8; }
-        .card.full { grid-column: span 12; }
 
-        /* CONTACTO */
-        .footer {
-            height: 60vh;
-            text-align: center;
+        .service-item h3 { font-size: 2rem; text-transform: uppercase; }
+        .service-item p { font-family: 'Inter', sans-serif; font-size: 0.8rem; text-transform: none; opacity: 0.7; }
+
+        /* BOTÓN DE IMPACTO */
+        .cta-big {
+            font-size: clamp(3rem, 10vw, 8rem);
             background: var(--neon);
             color: black;
-        }
-        .footer h2 { font-family: 'Syne', sans-serif; font-size: clamp(2.5rem, 8vw, 6rem); text-transform: uppercase; }
-        .btn-wa {
-            display: inline-block;
-            margin-top: 40px;
-            padding: 20px 50px;
-            background: black;
-            color: white;
+            text-align: center;
             text-decoration: none;
-            font-weight: 900;
-            text-transform: uppercase;
-            font-size: 1.2rem;
+            display: block;
+            width: 100%;
+            padding: 20px 0;
+            transition: 0.3s;
         }
+        .cta-big:hover { filter: invert(1); }
 
         @media (max-width: 768px) {
-            .card { grid-column: span 12; }
-            section { padding: 10% 5%; }
+            .services-grid { grid-template-columns: 1fr; }
+            section { height: auto; min-height: 100vh; padding: 20px; }
+            .big-title { font-size: 3.5rem; line-height: 1; }
         }
     </style>
 </head>
 <body>
 
-    <section class="hero">
-        <p class="tagline">Agencia de Innovación e IRL</p>
-        <h1>Todas<br>Las Cremas</h1>
+    <section>
+        <p class="tagline-small">Innovación • Tech • IRL</p>
+        <span class="big-title">Todas</span>
+        <span class="big-title outline-text">Las</span>
+        <span class="big-title" style="color: var(--neon);">Cremas</span>
     </section>
 
     <section>
-        <div class="phrase">La publicidad ya no es publicidad.</div>
-        <div class="phrase highlight-phrase">Es emoción.</div>
-        <div class="phrase">Es entretenimiento.</div>
-        <div class="phrase highlight-phrase">Es innovación.</div>
-        
-        <p class="philosophy">
-            La emoción es lo que mueve al mundo. Los recuerdos que nos acompañan toda la vida son emociones y los hechos que las generan.
-        </p>
-    </section>
-
-    <section class="innovation-pitch">
-        <div class="pitch-text">
-            Evolucionar no es una opción, es supervivencia.
+        <div class="text-wall">
+            <span class="big-title" style="font-size: clamp(2rem, 6vw, 5rem);">La Publicidad</span>
+            <span class="big-title outline-text" style="font-size: clamp(2rem, 6vw, 5rem);">Ya No Es</span>
+            <span class="big-title" style="font-size: clamp(2rem, 6vw, 5rem);">Publicidad</span>
         </div>
-        <p style="font-size: 1.2rem; line-height: 1.6;">
-            Aseguramos la presencia y el alcance de tu marca en un mundo donde todos están conectados. Automatizar tareas no es solo eficiencia: es liberar tu creatividad para que tu negocio crezca mientras la tecnología trabaja por ti.
+        <p class="philosophy-block">
+            La emoción es lo que mueve al mundo. Los recuerdos que nos acompañan toda la vida son emociones y los hechos que las generan. Evolucionar es asegurar que tu marca respire donde el mundo hoy conecta.
         </p>
     </section>
 
-    <section id="servicios">
-        <div class="grid">
-            <div class="card full">
-                <h3>Web & Low Code</h3>
-                <p>Construimos sitios con IA para asegurar tiempos de entrega récord y costos accesibles. Soluciones reales, no solo código.</p>
+    <section>
+        <div class="tagline-small" style="margin-bottom: 30px;">Soluciones • IA • Low Code</div>
+        <div class="services-grid">
+            <div class="service-item" style="background: white; color: black;">
+                <h3>Web IA</h3>
+                <p>Construcción de sitios y landing pages con IA y Low Code. Tiempos récord, costos accesibles, impacto máximo.</p>
             </div>
-            
-            <div class="card">
-                <h3>Landing Page</h3>
-                <p>1 Página de impacto total. Botón de WhatsApp y galería. Ideal para negocios locales.</p>
+            <div class="service-item">
+                <h3>Auto</h3>
+                <p>Automatización de procesos: reportes, chatbots, correos y flujos de trabajo inteligentes.</p>
             </div>
-
-            <div class="card">
-                <h3>Sitio Web</h3>
-                <p>3 Secciones dinámicas. Arquitectura de marca y galería pro para destacar.</p>
+            <div class="service-item">
+                <h3>SaaS</h3>
+                <p>Herramientas personalizadas de IA para nichos. Apps de polla de fútbol y soluciones a medida.</p>
             </div>
-
-            <div class="card full">
-                <h3>Automatización & SaaS</h3>
-                <p>Reportes, chatbots, procesamiento de planillas y herramientas de IA (como apps de pollas de fútbol) para nichos específicos.</p>
+            <div class="service-item" style="border-style: dashed;">
+                <h3>IRL</h3>
+                <p>BTL y experiencias físicas que se transforman en contenido digital viral.</p>
             </div>
         </div>
     </section>
 
-    <section class="footer">
-        <h2>¿Hacemos algo<br>brutal?</h2>
-        <a href="https://wa.me/tu-numero-aqui" class="btn-wa">Hablemos por WhatsApp</a>
+    <section style="justify-content: flex-end; padding-bottom: 0;">
+        <a href="https://wa.me/tu-numero" class="cta-big">HABLEMOS</a>
     </section>
 
 </body>
