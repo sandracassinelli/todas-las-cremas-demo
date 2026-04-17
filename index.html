@@ -24,17 +24,18 @@
 
         /* Secciones con menos espacio vacío */
         section {
-            min-height: 80vh; 
+            min-height: 100vh; 
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 40px 5%;
+            padding: 60px 8%;
             border-bottom: 1px solid #222;
         }
 
         /* Títulos: Ajuste de seguridad para que no se escape la "S"*/
         .big-title {
-            font-size: clamp(3rem, 13vw, 9rem); /* Bajamos de 15vw a 13vw para seguridad */
+            font-size: clamp(2.5rem, 10vw, 8.5rem); /* Bajamos de 15vw a 13vw para seguridad */
+            line-height: 1;
             text-transform: uppercase;
             letter-spacing: -0.05em;
             display: block;
@@ -57,11 +58,11 @@
 
         .philosophy-block {
             font-family: 'Inter', sans-serif;
-            font-size: clamp(1rem, 2.5vw, 1.3rem);
-            line-height: 1.3;
+            font-size: clamp(1rem, 2.2vw, 1.3rem);
+            line-height: 1.5;
             text-transform: none;
-            max-width: 700px;
-            margin-top: 20px;
+            max-width: 100%;
+            margin-top: 25px;
             color: #ccc;
         }
 
@@ -86,8 +87,8 @@
 
         /* BOTÓN HABLEMOS: Ajustado para que entre "OS" en el móvil */
         .cta-big {
-            /* 11vw es el tamaño ideal para que "HABLEMOS" (8 letras) no se corte */
-            font-size: clamp(2.5rem, 11vw, 8.5rem);
+            /* 10vw es el tamaño ideal para que "HABLEMOS" (8 letras) no se corte */
+            font-size: clamp(2.5rem, 10vw, 8.5rem);
             background: var(--neon);
             color: black;
             text-align: center;
@@ -95,17 +96,17 @@
             display: block;
             width: 100%;
             padding: 30px 0;
-            margin-top: 15px; /* Pegado a los servicios */;
+            margin-top: 18px; /* Pegado a los servicios */;
             transition: 0.3s;
         }
         .cta-big:hover { background: white; }
 
         /* Ajustes específicos para móviles */
         @media (max-width: 768px) { 
-            .big-title { font-size: 16vw;} /* Asegura que "CREMAS" entre */
+            .big-title { font-size: 14vw;} /* Asegura que "CREMAS" entre */
             .services-grid { grid-template-columns: 1fr} 
-            section { min-height: auto; padding: 60px 20px; }
-            .cta-big { font-size:13vw; }
+            section { min-height: auto; padding: 40px 20px; }
+            .cta-big { font-size: 11vw; }
         }
     </style>
 </head>
