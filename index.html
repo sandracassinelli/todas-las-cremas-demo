@@ -2,233 +2,250 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Todas las Cremas | Innovación & IRL</title>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todas las Cremas | Agencia de Innovación e IRL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@800&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #0a0a0a;
-            --accent: #e0fbfc; /* Un celeste eléctrico suave */
-            --cream: #fdfaf5;
-            --text-main: #ffffff;
-            --glass: rgba(255, 255, 255, 0.05);
+            --bg: #000000;
+            --text: #ffffff;
+            --neon: #00ff66; /* Verde Dopamina */
+            --accent: #ff00ff; /* Rosa Eléctrico */
         }
 
-        * { box-sizing: border-box; }
-        body, html { 
-            margin: 0; padding: 0; width: 100%; height: 100%; 
-            font-family: 'Space Grotesk', sans-serif; 
-            background-color: var(--bg); 
-            color: var(--text-main); 
-            overflow: hidden; 
-            touch-action: none; 
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; overflow-x: hidden; }
 
-        .slider-container { width: 100%; height: 100%; overflow: hidden; position: relative; }
-        .slider { display: flex; width: 600%; height: 100%; transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1); }
-
-        section { 
-            width: 16.666%; height: 100%; 
-            display: flex; flex-direction: column; 
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 50px 5%;
             position: relative;
         }
 
-        /* Capa de diseño */
-        .content {
-            padding: 10vh 8% 5vh 8%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            z-index: 2;
-        }
-
-        /* Tipografías de Agencia */
-        h1 { font-family: 'Syne', sans-serif; font-size: 3.5rem; line-height: 0.9; text-transform: uppercase; margin: 0; font-weight: 800; }
-        h2 { font-family: 'Syne', sans-serif; font-size: 1.8rem; color: var(--accent); margin-bottom: 20px; text-transform: uppercase; }
-        p { font-size: 1.1rem; line-height: 1.5; max-width: 500px; opacity: 0.9; font-weight: 300; }
-        
-        .highlight { color: var(--accent); }
-
-        /* Estilos de las cajas de servicios (IA & LOW CODE) */
-        .service-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        .service-card {
-            background: var(--glass);
-            padding: 20px;
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 5px;
-        }
-        .service-card h4 { margin: 0 0 10px 0; color: var(--accent); font-size: 0.9rem; text-transform: uppercase; }
-        .service-card ul { padding: 0; margin: 0; list-style: none; font-size: 0.85rem; opacity: 0.8; }
-
-        /* Botón de WhatsApp Estilo Tech */
-        .btn-wa {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 15px 30px;
-            background: var(--accent);
-            color: var(--bg);
-            text-decoration: none;
-            font-weight: 700;
+        .hero h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(3.5rem, 12vw, 10rem);
+            line-height: 0.8;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            width: fit-content;
-            transition: 0.3s;
-        }
-
-        /* Navegación Visual */
-        .nav-hint {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            font-size: 0.7rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            opacity: 0.4;
             z-index: 10;
         }
 
-        /* Fondo Decorativo */
-        .bg-number {
+        .hero .subtitle {
+            font-size: 1.2rem;
+            letter-spacing: 5px;
+            color: var(--neon);
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            z-index: 10;
+        }
+
+        /* --- CARRUSEL DINÁMICO (EL MOTOR VISUAL) --- */
+        .visual-container {
             position: absolute;
-            bottom: -50px;
-            right: -20px;
-            font-size: 25rem;
-            font-family: 'Syne', sans-serif;
-            font-weight: 800;
-            opacity: 0.03;
+            top: 10%;
+            right: 5%;
+            width: 45vw;
+            height: 60vh;
+            border: 2px solid var(--text);
+            overflow: hidden;
             z-index: 1;
         }
 
+        .carousel-track {
+            display: flex;
+            height: 100%;
+            animation: slideImages 20s infinite steps(1);
+        }
+
+        .carousel-track img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            flex-shrink: 0;
+            filter: grayscale(0.5) contrast(1.2);
+        }
+
+        @keyframes slideImages {
+            0% { transform: translateX(0%); }
+            16.6% { transform: translateX(-100%); }
+            33.3% { transform: translateX(-200%); }
+            50% { transform: translateX(-300%); }
+            66.6% { transform: translateX(-400%); }
+            83.3% { transform: translateX(-500%); }
+        }
+
+        /* --- MANIFIESTO SCROLL --- */
+        .manifesto { padding: 100px 5%; }
+        .scroll-phrase {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            text-transform: uppercase;
+            line-height: 0.9;
+            margin-bottom: 60px;
+            opacity: 0.1;
+            transition: 0.8s;
+        }
+        .scroll-phrase.active { opacity: 1; transform: scale(1.05); }
+
+        .philosophy-text {
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            max-width: 800px;
+            line-height: 1.3;
+            margin: 100px 0;
+            color: #888;
+        }
+
+        /* --- INNOVATION PITCH --- */
+        .innovation-block {
+            padding: 100px 5%;
+            background: var(--neon);
+            color: black;
+        }
+
+        .pitch-phrase {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(2rem, 5vw, 4rem);
+            line-height: 1;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+        }
+
+        /* --- SERVICES BENTO GRID --- */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 15px;
+            padding: 50px 5%;
+        }
+
+        .card {
+            background: #111;
+            border: 1px solid #333;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card h3 { font-family: 'Syne', sans-serif; font-size: 1.8rem; text-transform: uppercase; margin-bottom: 20px; color: var(--neon); }
+        .card p { font-size: 1rem; line-height: 1.4; opacity: 0.7; }
+        .card .price { margin-top: 20px; font-weight: 900; color: white; }
+
+        .full { grid-column: span 12; }
+        .half { grid-column: span 6; }
+
+        /* --- CTA FINAL --- */
+        .cta {
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: white;
+            color: black;
+            text-align: center;
+        }
+
+        .btn-wa {
+            background: black;
+            color: white;
+            padding: 25px 50px;
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            margin-top: 30px;
+            transition: 0.3s;
+        }
+        .btn-wa:hover { transform: rotate(-3deg) scale(1.1); }
+
         @media (max-width: 768px) {
-            h1 { font-size: 2.2rem; }
-            .service-grid { grid-template-columns: 1fr; }
+            .visual-container { width: 90vw; height: 40vh; top: 5%; right: 5%; }
+            .half { grid-column: span 12; }
         }
     </style>
 </head>
 <body>
 
-    <div class="nav-hint">Desliza para explorar →</div>
-
-    <div class="slider-container">
-        <div class="slider" id="slider">
-            
-            <section>
-                <div class="content">
-                    <p style="letter-spacing: 5px; color: var(--accent); margin-bottom: 10px;">AGENCIA DE INNOVACIÓN & IRL</p>
-                    <h1>Todas las<br>Cremas</h1>
-                    <p style="margin-top: 20px;">La publicidad ya no es publicidad. Es emoción. Es entretenimiento. <span class="highlight">Es innovación.</span></p>
-                </div>
-                <div class="bg-number">01</div>
-            </section>
-
-            <section>
-                <div class="content">
-                    <h2>Nuestra Filosofía</h2>
-                    <p>Creamos eventos inolvidables. Momentos que se convierten en contenido visual de alto impacto.</p>
-                    <p>Ideas y campañas que transforman a las empresas y las marcas <span class="highlight">de adentro hacia afuera.</span></p>
-                </div>
-                <div class="bg-number">02</div>
-            </section>
-
-            <section>
-                <div class="content">
-                    <h2>Experiencias IRL</h2>
-                    <p>Implementamos las acciones de <span class="highlight">BTL e innovación</span> que tu marca necesita para conectar en el mundo real.</p>
-                    <p>Desde activaciones masivas hasta experiencias boutique diseñadas para ser virales.</p>
-                </div>
-                <div class="bg-number">03</div>
-            </section>
-
-            <section>
-                <div class="content">
-                    <h2>IA & Low Code</h2>
-                    <p>Desarrollamos apps y plataformas web a la medida de tu negocio.</p>
-                    <div class="service-grid">
-                        <div class="service-card">
-                            <h4>Automatización</h4>
-                            <ul>
-                                <li>Reportes Inteligentes</li>
-                                <li>Chatbots de Negocio</li>
-                                <li>Procesamiento de Planillas</li>
-                            </ul>
-                        </div>
-                        <div class="service-card">
-                            <h4>Mini SaaS</h4>
-                            <ul>
-                                <li>Herramientas IA nicho</li>
-                                <li>Automatización de correos</li>
-                                <li>Dashboards a medida</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-number">04</div>
-            </section>
-
-            <section>
-                <div class="content">
-                    <h2>Nuestros Planes</h2>
-                    <div class="service-grid">
-                        <div class="service-card" style="border-color: var(--accent);">
-                            <h4 style="color: var(--accent);">LANDING PAGE</h4>
-                            <ul>
-                                <li>1 Página impacto total</li>
-                                <li>Botón de Whatsapp</li>
-                                <li>Galería de proyectos</li>
-                            </ul>
-                        </div>
-                        <div class="service-card">
-                            <h4>SITIO WEB</h4>
-                            <ul>
-                                <li>3 Secciones dinámicas</li>
-                                <li>Galería Pro</li>
-                                <li>Arquitectura de marca</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-number">05</div>
-            </section>
-
-            <section>
-                <div class="content">
-                    <h1>¿Hacemos<br>algo real?</h1>
-                    <p style="margin-top: 20px;">Lleva tu marca al siguiente nivel con tecnología y experiencias que emocionan.</p>
-                    <a href="https://wa.me/tu-numero" class="btn-wa">Iniciar Proyecto</a>
-                </div>
-                <div class="bg-number">06</div>
-            </section>
-
+    <section class="hero">
+        <div class="subtitle">Agencia de Innovación e IRL</div>
+        <h1>Todas<br>Las Cremas</h1>
+        
+        <div class="visual-container">
+            <div class="carousel-track">
+                <img src="https://images.unsplash.com/photo-1596743444223-997f082e568d?q=80&w=1000" alt="Ruleta 50s">
+                <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=1000" alt="Selfies Alegres">
+                <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1000" alt="Espejos">
+                <img src="https://images.unsplash.com/photo-1452621933871-dd6d0ee14a5d?q=80&w=1000" alt="Maratón">
+                <img src="https://images.unsplash.com/photo-1511886929837-354d827aae26?q=80&w=1000" alt="Futbol App">
+                <img src="https://images.unsplash.com/photo-1514525253361-b83f859b73c0?q=80&w=1000" alt="DJ Mirror">
+            </div>
         </div>
-    </div>
+    </section>
+
+    <section class="manifesto">
+        <div class="scroll-phrase">La publicidad ya no es publicidad.</div>
+        <div class="scroll-phrase">Es emoción.</div>
+        <div class="scroll-phrase">Es entretenimiento.</div>
+        <div class="scroll-phrase">Es innovación.</div>
+
+        <p class="philosophy-text">
+            La emoción es lo que mueve al mundo. Los recuerdos que nos acompañan toda la vida son emociones y los hechos que las generan.
+        </p>
+    </section>
+
+    <section class="innovation-block">
+        <div class="pitch-phrase">
+            Existir digitalmente es asegurar que tu marca respire donde el mundo conecta. 
+        </div>
+        <div class="pitch-phrase" style="font-weight: 400; opacity: 0.8;">
+            Automatizamos la carga operativa para blindar tu libertad creativa y escalar tu alcance sin límites.
+        </div>
+    </section>
+
+    <section class="grid">
+        <div class="card full">
+            <h3>Web Construction (IA + Low Code)</h3>
+            <p>Usamos las herramientas más avanzadas para asegurar tiempos de espera récord y costos accesibles. No solo programamos, construimos soluciones.</p>
+        </div>
+        
+        <div class="card half">
+            <h3>Landing Page</h3>
+            <p>Ideal para negocios locales. 1 página de alto impacto, galería de fotos y botón directo a WhatsApp.</p>
+            <div class="price">Plan Esencial</div>
+        </div>
+
+        <div class="card half">
+            <h3>Sitio Web Pro</h3>
+            <p>Estructura de 3 secciones, arquitectura de marca, galería premium y estrategia de conversión.</p>
+            <div class="price">Plan Crecimiento</div>
+        </div>
+
+        <div class="card full" style="border-color: var(--neon);">
+            <h3>Automatización & Mini SaaS</h3>
+            <p>Generación de reportes, chatbots inteligentes y herramientas de IA para nichos específicos. Haz que la tecnología trabaje por ti.</p>
+        </div>
+    </section>
+
+    <section class="cta">
+        <h2 style="font-family: 'Syne'; font-size: 3rem; text-transform: uppercase;">¿Hacemos algo<br>inolvidable?</h2>
+        <a href="https://wa.me/tu-numero" class="btn-wa">Conversemos</a>
+    </section>
 
     <script>
-        let currentIdx = 0;
-        const slider = document.getElementById('slider');
-
-        function moveSlide(dir) {
-            currentIdx = Math.max(0, Math.min(currentIdx + dir, 5));
-            slider.style.transform = `translateX(-${(currentIdx * 100) / 6}%)`;
-        }
-
-        let startX = 0;
-        document.addEventListener('touchstart', e => startX = e.touches[0].clientX);
-        document.addEventListener('touchend', e => {
-            let endX = e.changedTouches[0].clientX;
-            if (startX - endX > 50) moveSlide(1);
-            if (endX - startX > 50) moveSlide(-1);
-        });
-
-        document.addEventListener('keydown', e => {
-            if (e.key === "ArrowRight") moveSlide(1);
-            if (e.key === "ArrowLeft") moveSlide(-1);
+        // Efecto de aparición al hacer scroll
+        const phrases = document.querySelectorAll('.scroll-phrase');
+        window.addEventListener('scroll', () => {
+            phrases.forEach(p => {
+                const rect = p.getBoundingClientRect();
+                if(rect.top < window.innerHeight * 0.75) {
+                    p.classList.add('active');
+                }
+            });
         });
     </script>
 </body>
