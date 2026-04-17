@@ -17,26 +17,24 @@
             background: var(--bg); 
             color: var(--text); 
             font-family: 'Syne', sans-serif; 
-            line-height: 0.9;
+            line-height: 0.85;
             overflow-x: hidden;
         }
 
-        /* SECCIONES CONTENIDAS */
         section {
-            height: 100vh; /* Ocupa exactamente el alto de la pantalla */
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             padding: 40px;
             border-bottom: 1px solid #222;
-            overflow: hidden; /* Evita que el texto se escape */
         }
 
-        /* TIPOGRAFÍA MASIVA Y COMPACTA */
+        /* TEXTO MASIVO */
         .big-title {
-            font-size: clamp(2.5rem, 12vw, 9rem);
+            font-size: clamp(3rem, 15vw, 10rem);
             text-transform: uppercase;
-            letter-spacing: -4px;
+            letter-spacing: -5px;
             display: block;
         }
 
@@ -47,68 +45,68 @@
 
         .tagline-small {
             font-family: 'Inter', sans-serif;
-            font-size: 0.9rem;
-            letter-spacing: 5px;
+            font-size: 0.8rem;
+            letter-spacing: 6px;
             text-transform: uppercase;
             color: var(--neon);
-            margin-bottom: 10px;
-        }
-
-        /* BLOQUES DE TEXTO RELLENOS */
-        .text-wall {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 10px;
+            margin-bottom: 15px;
         }
 
         .philosophy-block {
             font-family: 'Inter', sans-serif;
-            font-size: clamp(1rem, 2vw, 1.4rem);
-            line-height: 1.2;
-            text-transform: none;
-            max-width: 700px;
-            margin-top: 20px;
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            line-height: 1.3;
+            max-width: 800px;
+            margin-top: 30px;
             font-weight: 300;
-            color: #ccc;
+            color: #bbb;
+            text-transform: none;
         }
 
-        /* SERVICIOS ESTILO BRUTALISTA */
+        /* SERVICIOS COMPACTOS */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            height: 70%;
+            gap: 15px;
+            margin-bottom: 20px; /* Espacio mínimo antes del botón */
         }
 
         .service-item {
             border: 1px solid var(--text);
-            padding: 20px;
+            padding: 25px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
 
-        .service-item h3 { font-size: 2rem; text-transform: uppercase; }
-        .service-item p { font-family: 'Inter', sans-serif; font-size: 0.8rem; text-transform: none; opacity: 0.7; }
+        .service-item h3 { font-size: 2.2rem; text-transform: uppercase; margin-bottom: 10px; }
+        .service-item p { font-family: 'Inter', sans-serif; font-size: 0.85rem; text-transform: none; opacity: 0.7; line-height: 1.2; }
 
-        /* BOTÓN DE IMPACTO */
+        /* EL BOTÓN ENORME (AHORA MÁS CERCA) */
         .cta-big {
-            font-size: clamp(3rem, 10vw, 8rem);
+            font-size: clamp(3.5rem, 12vw, 9rem);
             background: var(--neon);
             color: black;
             text-align: center;
             text-decoration: none;
             display: block;
             width: 100%;
-            padding: 20px 0;
-            transition: 0.3s;
+            padding: 30px 0;
+            margin-top: 10px;
+            transition: 0.2s ease-in-out;
+            border: none;
+            cursor: pointer;
         }
-        .cta-big:hover { filter: invert(1); }
+
+        .cta-big:hover { 
+            background: white;
+            transform: scale(1.02);
+        }
 
         @media (max-width: 768px) {
             .services-grid { grid-template-columns: 1fr; }
-            section { height: auto; min-height: 100vh; padding: 20px; }
-            .big-title { font-size: 3.5rem; line-height: 1; }
+            section { padding: 20px; height: auto; }
+            .big-title { font-size: 4rem; letter-spacing: -2px; }
         }
     </style>
 </head>
@@ -122,40 +120,37 @@
     </section>
 
     <section>
-        <div class="text-wall">
-            <span class="big-title" style="font-size: clamp(2rem, 6vw, 5rem);">La Publicidad</span>
-            <span class="big-title outline-text" style="font-size: clamp(2rem, 6vw, 5rem);">Ya No Es</span>
-            <span class="big-title" style="font-size: clamp(2rem, 6vw, 5rem);">Publicidad</span>
-        </div>
+        <span class="big-title" style="font-size: clamp(2rem, 8vw, 6rem);">La emoción</span>
+        <span class="big-title outline-text" style="font-size: clamp(2rem, 8vw, 6rem);">Mueve al</span>
+        <span class="big-title" style="font-size: clamp(2rem, 8vw, 6rem);">Mundo</span>
         <p class="philosophy-block">
-            La emoción es lo que mueve al mundo. Los recuerdos que nos acompañan toda la vida son emociones y los hechos que las generan. Evolucionar es asegurar que tu marca respire donde el mundo hoy conecta.
+            La publicidad ya no es publicidad. Es emoción, entretenimiento e innovación. Evolucionar es asegurar que tu marca respire donde el mundo hoy conecta. Automatizamos para que tú crees.
         </p>
     </section>
 
-    <section>
-        <div class="tagline-small" style="margin-bottom: 30px;">Soluciones • IA • Low Code</div>
+    <section style="justify-content: flex-start; padding-top: 60px;">
+        <div class="tagline-small">Nuestras Soluciones</div>
+        
         <div class="services-grid">
             <div class="service-item" style="background: white; color: black;">
                 <h3>Web IA</h3>
-                <p>Construcción de sitios y landing pages con IA y Low Code. Tiempos récord, costos accesibles, impacto máximo.</p>
+                <p>Landing pages y sitios corporativos con tiempos récord y costos accesibles.</p>
             </div>
             <div class="service-item">
                 <h3>Auto</h3>
-                <p>Automatización de procesos: reportes, chatbots, correos y flujos de trabajo inteligentes.</p>
+                <p>Automatización de procesos: reportes, chatbots y flujos inteligentes.</p>
             </div>
             <div class="service-item">
                 <h3>SaaS</h3>
-                <p>Herramientas personalizadas de IA para nichos. Apps de polla de fútbol y soluciones a medida.</p>
+                <p>Apps de nicho y herramientas IA personalizadas.</p>
             </div>
             <div class="service-item" style="border-style: dashed;">
                 <h3>IRL</h3>
                 <p>BTL y experiencias físicas que se transforman en contenido digital viral.</p>
             </div>
         </div>
-    </section>
 
-    <section style="justify-content: flex-end; padding-bottom: 0;">
-        <a href="https://wa.me/tu-numero" class="cta-big">HABLEMOS</a>
+        <a href="https://wa.me/51987302862" class="cta-big">HABLEMOS</a>
     </section>
 
 </body>
