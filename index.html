@@ -26,16 +26,25 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 40px;
+            padding: 5vw; /* Padding proporcional al ancho */
             border-bottom: 1px solid #222;
         }
 
-        /* TEXTO MASIVO */
+        /* TÍTULOS RECOMODADOS PARA QUE NO SE CORTEN */
         .big-title {
-            font-size: clamp(3rem, 15vw, 10rem);
+            /* Uso de vw para que el tamaño dependa del ancho de la pantalla */
+            font-size: 18vw; 
+            max-font-size: 10rem;
             text-transform: uppercase;
-            letter-spacing: -5px;
+            letter-spacing: -0.05em;
             display: block;
+            width: 100%;
+            word-wrap: break-word;
+        }
+
+        /* Ajuste específico para PC para que no crezca infinito */
+        @media (min-width: 1024px) {
+            .big-title { font-size: 9rem; }
         }
 
         .outline-text {
@@ -45,8 +54,8 @@
 
         .tagline-small {
             font-family: 'Inter', sans-serif;
-            font-size: 0.8rem;
-            letter-spacing: 6px;
+            font-size: clamp(0.7rem, 2vw, 0.9rem);
+            letter-spacing: 4px;
             text-transform: uppercase;
             color: var(--neon);
             margin-bottom: 15px;
@@ -54,7 +63,7 @@
 
         .philosophy-block {
             font-family: 'Inter', sans-serif;
-            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            font-size: clamp(1rem, 4vw, 1.3rem);
             line-height: 1.3;
             max-width: 800px;
             margin-top: 30px;
@@ -63,50 +72,54 @@
             text-transform: none;
         }
 
-        /* SERVICIOS COMPACTOS */
+        /* SERVICIOS */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin-bottom: 20px; /* Espacio mínimo antes del botón */
+            gap: 10px;
+            margin-bottom: 10px;
         }
 
         .service-item {
             border: 1px solid var(--text);
-            padding: 25px;
+            padding: 20px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
 
-        .service-item h3 { font-size: 2.2rem; text-transform: uppercase; margin-bottom: 10px; }
-        .service-item p { font-family: 'Inter', sans-serif; font-size: 0.85rem; text-transform: none; opacity: 0.7; line-height: 1.2; }
+        .service-item h3 { font-size: clamp(1.2rem, 5vw, 2rem); text-transform: uppercase; margin-bottom: 5px; }
+        .service-item p { font-family: 'Inter', sans-serif; font-size: clamp(0.75rem, 3vw, 0.85rem); text-transform: none; opacity: 0.7; line-height: 1.1; }
 
-        /* EL BOTÓN ENORME (AHORA MÁS CERCA) */
+        /* EL BOTÓN CORREGIDO (HABLEMOS COMPLETO) */
         .cta-big {
-            font-size: clamp(3.5rem, 12vw, 9rem);
+            /* 14vw asegura que la palabra quepa en el ancho del celular */
+            font-size: 14vw; 
             background: var(--neon);
             color: black;
             text-align: center;
             text-decoration: none;
             display: block;
             width: 100%;
-            padding: 30px 0;
+            padding: 20px 0;
             margin-top: 10px;
-            transition: 0.2s ease-in-out;
+            transition: 0.2s;
             border: none;
-            cursor: pointer;
         }
 
-        .cta-big:hover { 
-            background: white;
-            transform: scale(1.02);
+        /* Ajuste para que en PC no se vea absurdamente gigante */
+        @media (min-width: 1024px) {
+            .cta-big { font-size: 8rem; padding: 40px 0; }
         }
 
+        .cta-big:hover { background: white; }
+
+        /* AJUSTES PARA CELULAR VERTICAL */
         @media (max-width: 768px) {
-            .services-grid { grid-template-columns: 1fr; }
-            section { padding: 20px; height: auto; }
-            .big-title { font-size: 4rem; letter-spacing: -2px; }
+            .services-grid { grid-template-columns: 1fr; } /* Una sola columna en móvil */
+            section { height: auto; padding: 40px 20px; }
+            .big-title { font-size: 20vw; } /* Un poco más grande para llenar el ancho */
+            .cta-big { font-size: 16vw; } /* Máximo ancho para que quepa "HABLEMOS" */
         }
     </style>
 </head>
@@ -120,37 +133,37 @@
     </section>
 
     <section>
-        <span class="big-title" style="font-size: clamp(2rem, 8vw, 6rem);">La emoción</span>
-        <span class="big-title outline-text" style="font-size: clamp(2rem, 8vw, 6rem);">Mueve al</span>
-        <span class="big-title" style="font-size: clamp(2rem, 8vw, 6rem);">Mundo</span>
+        <span class="big-title" style="font-size: 14vw;">La emoción</span>
+        <span class="big-title outline-text" style="font-size: 14vw;">Mueve al</span>
+        <span class="big-title" style="font-size: 14vw;">Mundo</span>
         <p class="philosophy-block">
-            La publicidad ya no es publicidad. Es emoción, entretenimiento e innovación. Evolucionar es asegurar que tu marca respire donde el mundo hoy conecta. Automatizamos para que tú crees.
+            La publicidad ya no es publicidad. Es emoción, entretenimiento e innovación. Evolucionar es asegurar que tu marca respire donde el mundo hoy conecta.
         </p>
     </section>
 
-    <section style="justify-content: flex-start; padding-top: 60px;">
+    <section style="justify-content: flex-start;">
         <div class="tagline-small">Nuestras Soluciones</div>
         
         <div class="services-grid">
             <div class="service-item" style="background: white; color: black;">
                 <h3>Web IA</h3>
-                <p>Landing pages y sitios corporativos con tiempos récord y costos accesibles.</p>
+                <p>Landing pages y sitios corporativos en tiempos récord.</p>
             </div>
             <div class="service-item">
                 <h3>Auto</h3>
-                <p>Automatización de procesos: reportes, chatbots y flujos inteligentes.</p>
+                <p>Automatización de procesos y chatbots inteligentes.</p>
             </div>
             <div class="service-item">
                 <h3>SaaS</h3>
-                <p>Apps de nicho y herramientas IA personalizadas.</p>
+                <p>Apps de nicho (Pollas) y herramientas personalizadas.</p>
             </div>
             <div class="service-item" style="border-style: dashed;">
                 <h3>IRL</h3>
-                <p>BTL y experiencias físicas que se transforman en contenido digital viral.</p>
+                <p>Experiencias físicas que se vuelven contenido digital.</p>
             </div>
         </div>
 
-        <a href="https://wa.me/51987302862" class="cta-big">HABLEMOS</a>
+        <a href="https://wa.me/tu-numero-aqui" class="cta-big">HABLEMOS</a>
     </section>
 
 </body>
