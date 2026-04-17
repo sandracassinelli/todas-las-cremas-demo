@@ -12,39 +12,46 @@
             --neon: #00ff66;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        /* RESET TOTAL PARA EVITAR CORTES */
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            /* Esto evita que las palabras se partan con guiones */
+            hyphens: none;
+            word-break: keep-all;
+            overflow-wrap: normal;
+        }
+
         body { 
             background: var(--bg); 
             color: var(--text); 
             font-family: 'Syne', sans-serif; 
-            line-height: 0.85;
+            line-height: 0.9;
             overflow-x: hidden;
+            width: 100%;
         }
 
         section {
             min-height: 100vh;
+            width: 100%;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 5vw; /* Padding proporcional al ancho */
+            padding: 5vw;
             border-bottom: 1px solid #222;
         }
 
-        /* TÍTULOS RECOMODADOS PARA QUE NO SE CORTEN */
+        /* TITULOS QUE NO SE ROMPEN */
         .big-title {
-            /* Uso de vw para que el tamaño dependa del ancho de la pantalla */
-            font-size: 18vw; 
-            max-font-size: 10rem;
+            /* clamp(mínimo, preferido, máximo) */
+            /* Bajamos el 18vw a 12vw para que "CREMAS" (6 letras) quepa siempre */
+            font-size: clamp(2.8rem, 12vw, 9rem);
             text-transform: uppercase;
-            letter-spacing: -0.05em;
+            letter-spacing: -0.04em;
             display: block;
             width: 100%;
-            word-wrap: break-word;
-        }
-
-        /* Ajuste específico para PC para que no crezca infinito */
-        @media (min-width: 1024px) {
-            .big-title { font-size: 9rem; }
+            white-space: nowrap; /* Prohibido saltar de línea en la misma palabra */
         }
 
         .outline-text {
@@ -58,68 +65,76 @@
             letter-spacing: 4px;
             text-transform: uppercase;
             color: var(--neon);
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
 
         .philosophy-block {
             font-family: 'Inter', sans-serif;
-            font-size: clamp(1rem, 4vw, 1.3rem);
-            line-height: 1.3;
-            max-width: 800px;
-            margin-top: 30px;
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            line-height: 1.4;
+            max-width: 600px;
+            margin-top: 20px;
             font-weight: 300;
             color: #bbb;
             text-transform: none;
         }
 
-        /* SERVICIOS */
+        /* SERVICIOS COMPACTOS */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin-bottom: 10px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            width: 100%;
+            margin-top: 20px;
         }
 
         .service-item {
             border: 1px solid var(--text);
             padding: 20px;
+            min-height: 150px;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: center;
         }
 
-        .service-item h3 { font-size: clamp(1.2rem, 5vw, 2rem); text-transform: uppercase; margin-bottom: 5px; }
-        .service-item p { font-family: 'Inter', sans-serif; font-size: clamp(0.75rem, 3vw, 0.85rem); text-transform: none; opacity: 0.7; line-height: 1.1; }
+        .service-item h3 { font-size: 1.8rem; text-transform: uppercase; margin-bottom: 8px; }
+        .service-item p { font-family: 'Inter', sans-serif; font-size: 0.85rem; text-transform: none; opacity: 0.7; }
 
-        /* EL BOTÓN CORREGIDO (HABLEMOS COMPLETO) */
+        /* EL BOTÓN "HABLEMOS" (8 LETRAS) */
+        .cta-container {
+            width: 100%;
+            margin-top: 15px;
+        }
+
         .cta-big {
-            /* 14vw asegura que la palabra quepa en el ancho del celular */
-            font-size: 14vw; 
+            /* 11vw es el tamaño mágico para que "HABLEMOS" quepa en un celular promedio */
+            font-size: clamp(2.5rem, 11vw, 7.5rem); 
             background: var(--neon);
             color: black;
             text-align: center;
             text-decoration: none;
             display: block;
             width: 100%;
-            padding: 20px 0;
-            margin-top: 10px;
-            transition: 0.2s;
+            padding: 25px 10px;
+            transition: 0.3s;
             border: none;
-        }
-
-        /* Ajuste para que en PC no se vea absurdamente gigante */
-        @media (min-width: 1024px) {
-            .cta-big { font-size: 8rem; padding: 40px 0; }
+            white-space: nowrap;
         }
 
         .cta-big:hover { background: white; }
 
-        /* AJUSTES PARA CELULAR VERTICAL */
-        @media (max-width: 768px) {
-            .services-grid { grid-template-columns: 1fr; } /* Una sola columna en móvil */
-            section { height: auto; padding: 40px 20px; }
-            .big-title { font-size: 20vw; } /* Un poco más grande para llenar el ancho */
-            .cta-big { font-size: 16vw; } /* Máximo ancho para que quepa "HABLEMOS" */
+        /* AJUSTES PARA PC */
+        @media (min-width: 1024px) {
+            .big-title { font-size: clamp(5rem, 10vw, 8.5rem); }
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            section { padding: 0 10%; }
+        }
+
+        /* AJUSTES PARA MÓVIL */
+        @media (max-width: 480px) {
+            .big-title { font-size: 12.5vw; }
+            .cta-big { font-size: 11.5vw; padding: 20px 5px; }
+            section { padding: 40px 20px; }
         }
     </style>
 </head>
@@ -133,37 +148,39 @@
     </section>
 
     <section>
-        <span class="big-title" style="font-size: 14vw;">La emoción</span>
-        <span class="big-title outline-text" style="font-size: 14vw;">Mueve al</span>
-        <span class="big-title" style="font-size: 14vw;">Mundo</span>
+        <span class="big-title">La emoción</span>
+        <span class="big-title outline-text">Mueve al</span>
+        <span class="big-title" style="color: var(--text);">Mundo</span>
         <p class="philosophy-block">
             La publicidad ya no es publicidad. Es emoción, entretenimiento e innovación. Evolucionar es asegurar que tu marca respire donde el mundo hoy conecta.
         </p>
     </section>
 
-    <section style="justify-content: flex-start;">
-        <div class="tagline-small">Nuestras Soluciones</div>
+    <section style="justify-content: flex-start; padding-top: 50px;">
+        <div class="tagline-small">Soluciones Reales</div>
         
         <div class="services-grid">
             <div class="service-item" style="background: white; color: black;">
                 <h3>Web IA</h3>
-                <p>Landing pages y sitios corporativos en tiempos récord.</p>
+                <p>Landing pages y sitios web con tiempos récord y costos accesibles.</p>
             </div>
             <div class="service-item">
                 <h3>Auto</h3>
-                <p>Automatización de procesos y chatbots inteligentes.</p>
+                <p>Automatización de procesos: reportes, chatbots y flujos inteligentes.</p>
             </div>
             <div class="service-item">
                 <h3>SaaS</h3>
-                <p>Apps de nicho (Pollas) y herramientas personalizadas.</p>
+                <p>Apps de nicho (Pollas de fútbol) y herramientas IA personalizadas.</p>
             </div>
             <div class="service-item" style="border-style: dashed;">
                 <h3>IRL</h3>
-                <p>Experiencias físicas que se vuelven contenido digital.</p>
+                <p>BTL y experiencias físicas que se transforman en contenido digital.</p>
             </div>
         </div>
 
-        <a href="https://wa.me/tu-numero-aqui" class="cta-big">HABLEMOS</a>
+        <div class="cta-container">
+            <a href="https://wa.me/tu-numero-aqui" class="cta-big">HABLEMOS</a>
+        </div>
     </section>
 
 </body>
