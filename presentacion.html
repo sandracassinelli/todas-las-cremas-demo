@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentación Partners | Todas las Cremas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@800&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg: #1a1a1a; --text: #ffffff; --accent: #00ff66; --hot: #ff3366; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; scroll-behavior: smooth; }
+        
+        /* Estructura de Slides */
+        section { 
+            min-height: 100vh; 
+            padding: 60px 10%; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            border-bottom: 2px solid #333;
+        }
+
+        h2 { font-family: 'Syne', sans-serif; font-size: clamp(2.5rem, 8vw, 5rem); text-transform: uppercase; line-height: 0.9; margin-bottom: 30px; }
+        p { font-size: 1.2rem; max-width: 700px; margin-bottom: 20px; opacity: 0.9; }
+        .highlight { color: var(--accent); }
+
+        /* Slide 1: Portada */
+        #hero { background: var(--bg); text-align: left; }
+        .brand { font-family: 'Syne', sans-serif; font-size: 1.5rem; color: var(--hot); margin-bottom: 20px; display: block; }
+
+        /* Slide 2: El Diferencial */
+        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 40px; }
+        .feature-item { border-left: 5px solid var(--accent); padding-left: 20px; }
+        .feature-item h3 { font-family: 'Syne', sans-serif; text-transform: uppercase; margin-bottom: 10px; }
+
+        /* Slide 3: Demo Interactiva */
+        .demo-box { background: #fff; color: #000; padding: 40px; text-align: center; border: 5px solid var(--hot); box-shadow: 15px 15px 0px var(--hot); }
+        .btn-demo { display: inline-block; padding: 20px 40px; background: var(--hot); color: #fff; text-decoration: none; font-family: 'Syne', sans-serif; text-transform: uppercase; font-size: 1.2rem; margin-top: 20px; }
+
+        /* Slide 4: Alianza */
+        .partner-box { border: 2px dashed var(--accent); padding: 30px; margin-top: 20px; }
+
+        /* Navegación lateral (indicadores) */
+        .nav-dots { position: fixed; right: 20px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 15px; }
+        .dot { width: 12px; height: 12px; border: 2px solid var(--text); border-radius: 50%; text-decoration: none; }
+        .dot:hover { background: var(--accent); }
+
+        @media (max-width: 768px) {
+            section { padding: 40px 5%; }
+            h2 { font-size: 15vw; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="nav-dots">
+        <a href="#hero" class="dot"></a>
+        <a href="#diferencial" class="dot"></a>
+        <a href="#soluciones" class="dot"></a>
+        <a href="#demo" class="dot"></a>
+        <a href="#alianza" class="dot"></a>
+    </div>
+
+    <section id="hero">
+        <span class="brand">Todas las Cremas / Tech Partners</span>
+        <h2>Tú haces <br>el <span class="highlight">Show</span>.</h2>
+        <p>Nosotros hacemos que la tecnología funcione. Somos el brazo técnico de las mejores producciones de eventos.</p>
+        <p style="font-weight: 700; color: var(--accent);">↓ Desliza para conocer la alianza</p>
+    </section>
+
+    <section id="diferencial">
+        <h2>Invisible <br>& <span class="highlight">Potente</span>.</h2>
+        <div class="feature-grid">
+            <div class="feature-item">
+                <h3>Marca Blanca</h3>
+                <p>Tu cliente nunca sabrá de nosotros. Trabajamos como parte de tu equipo interno.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Velocidad</h3>
+                <p>Despliegue de landings en 48h. Listas para recibir miles de registros.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Data Real</h3>
+                <p>Bases de datos limpias y automatizadas directamente a tu Google Sheets.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="soluciones">
+        <h2>Nuestros <br><span class="highlight">Módulos</span>.</h2>
+        <p>Soluciones listas para implementar en tu próximo evento:</p>
+        <ul style="list-style: none; font-family: 'Syne', sans-serif; font-size: 1.5rem; text-transform: uppercase;">
+            <li style="margin-bottom: 15px;">• Landing de Activación</li>
+            <li style="margin-bottom: 15px;">• Web de Identidad (Talentos/Marcas)</li>
+            <li style="margin-bottom: 15px;">• Smart Data & Automation</li>
+        </ul>
+    </section>
+
+    <section id="demo">
+        <div class="demo-box">
+            <h3 style="font-family: 'Syne', sans-serif; font-size: 2rem; text-transform: uppercase; margin-bottom: 10px;">¿Quieres probarlo?</h3>
+            <p>Mira nuestra demo funcional de un sorteo para celulares.</p>
+            <a href="https://demo-sorteo.vercel.app" target="_blank" class="btn-demo">Ver Demo en Vivo</a>
+        </div>
+    </section>
+
+    <section id="alianza">
+        <h2>Hagamos <br><span class="highlight">Negocio</span>.</h2>
+        <div class="partner-box">
+            <p><strong>Modelo Partner:</strong> Tú lideras la gestión con el cliente, nosotros cobramos una tarifa plana de socio y tú manejas tu propio margen de ganancia.</p>
+            <p>Acceso exclusivo a nuestro:</p>
+            <a href="/tarifario" style="color: var(--accent); font-weight: 700; text-decoration: none;">Ver Tarifario Confidencial →</a>
+        </div>
+        <p style="margin-top: 40px; font-weight: 700; text-transform: uppercase;">¿Hablamos por WhatsApp?</p>
+    </section>
+
+</body>
+</html>
