@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarifario Partners | Todas las Cremas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@800&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg: #ffffff; --text: #1a1a1a; --accent: #00ff66; --partner: #ff3366; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); padding: 40px 5%; }
+        
+        h1 { font-family: 'Syne', sans-serif; font-size: clamp(2rem, 8vw, 4rem); text-transform: uppercase; line-height: 0.9; margin-bottom: 40px; border-bottom: 10px solid var(--text); padding-bottom: 10px; }
+        
+        .intro { font-size: 1.2rem; font-weight: 700; max-width: 600px; margin-bottom: 40px; text-transform: uppercase; }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+
+        .card { border: 4px solid var(--text); padding: 25px; background: white; box-shadow: 10px 10px 0px var(--text); transition: 0.2s; }
+        .card:hover { transform: translate(-5px, -5px); box-shadow: 15px 15px 0px var(--text); }
+
+        .service-name { font-family: 'Syne', sans-serif; font-size: 1.5rem; text-transform: uppercase; margin-bottom: 15px; display: block; }
+        
+        .price-box { margin: 20px 0; padding: 15px; border: 2px dashed var(--text); background: #f9f9f9; }
+        .price-tag { display: block; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; }
+        .price-value { font-family: 'Syne', sans-serif; font-size: 1.8rem; color: var(--partner); }
+        .sugerido { color: #666; font-size: 1.1rem; }
+
+        .badge { display: inline-block; background: var(--text); color: white; padding: 5px 10px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; margin-bottom: 10px; }
+
+        .footer { margin-top: 60px; border-top: 4px solid var(--text); padding-top: 20px; font-weight: 700; text-transform: uppercase; font-size: 0.8rem; }
+
+        @media (max-width: 768px) {
+            body { padding: 20px 5%; }
+            h1 { font-size: 12vw; }
+            .card { box-shadow: 5px 5px 0px var(--text); }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Tarifario <br>Partners 2026</h1>
+    
+    <p class="intro">Soluciones de marca blanca para productoras de eventos. Tecnología invisible, resultados reales.</p>
+
+    <div class="grid">
+        <div class="card">
+            <span class="badge">Más Solicitado</span>
+           <span class="service-name">Landing de Activación</span>
+            <p>Landing page para acciones específicas: registros, sorteos, preventas o lanzamientos de marca.</p>
+            <div class="price-box">
+                <span class="price-tag">Precio Partner (Para ti)</span>
+                <span class="price-value">S/ 500</span>
+                <hr style="margin: 10px 0; border: 1px solid #ddd;">
+                <span class="price-tag">Venta Sugerida</span>
+                <span class="sugerido">S/ 750 - S/ 900</span>
+            </div>
+            <p style="font-size: 0.8rem;">* Entrega en 3-4 días.</p>
+        </div>
+
+        <div class="card">
+            <span class="badge">Premium</span>
+            <span class="service-name">Web de Identidad</span>
+            <p>Diseño de alto impacto (Home + 2 secciones) para marcas o talentos.</p>
+            <div class="price-box">
+                <span class="price-tag">Precio Partner (Para ti)</span>
+                <span class="price-value">S/ 1,200</span>
+                <hr style="margin: 10px 0; border: 1px solid #ddd;">
+                <span class="price-tag">Venta Sugerida</span>
+                <span class="sugerido">S/ 1,800 - S/ 2,200</span>
+            </div>
+            <p style="font-size: 0.8rem;">* SEO y Responsive incluido. Tiempo de entrega a definir según el proyecto.</p>
+        </div>
+
+        <div class="card">
+            <span class="badge">Eficiencia</span>
+            <span class="service-name">Smart Data / Auto</span>
+            <p>Automatización de formularios a Google Sheets y reportes en tiempo real.</p>
+            <div class="price-box">
+                <span class="price-tag">Precio Partner (Para ti)</span>
+                <span class="price-value">S/ 400</span>
+                <hr style="margin: 10px 0; border: 1px solid #ddd;">
+                <span class="price-tag">Venta Sugerida</span>
+                <span class="sugerido">S/ 650 - S/ 800</span>
+            </div>
+            <p style="font-size: 0.8rem;">* Integración vía API / Webhooks. Tiempo de entrega a definir según el proyecto.</p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Confidencialidad Garantizada • Modalidad Marca Blanca • Todas las Cremas Tech</p>
+    </div>
+
+</body>
+</html>
