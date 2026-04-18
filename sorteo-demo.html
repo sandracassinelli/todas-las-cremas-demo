@@ -6,33 +6,35 @@
     <title>Sorteo Exclusivo | Demo Todas las Cremas</title>
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@800&family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        :root { --bg: #f5f5f5; --accent: #ff3366; --text: #1a1a1a; }
+        :root { --bg: #f5f5f5; --accent: #ff3366; --text: #1a1a1a; --success: #00e676; --error: #ff1744;}
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.4; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.4; overflow-x: hidden;}
         
-        section { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; }
+        section { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; text-align: center;}
         
         .hero-title { 
             font-family: 'Syne', sans-serif; 
             font-size: clamp(2.5rem, 10vw, 6rem); 
             text-transform: uppercase; 
-            text-align: center; 
             line-height: 0.9;
             margin-bottom: 20px;
         }
 
         .highlight { color: var(--accent); }
 
-        .form-card {
+        .form-card, .result-card {
             background: white;
             padding: 30px;
             width: 100%;
             max-width: 450px;
             border: 3px solid var(--text);
             box-shadow: 10px 10px 0px var(--text);
+            position: relative;
         }
 
-        .form-group { margin-bottom: 20px; }
+        .result-card { display: none; } /* Oculto por defecto */
+
+        .form-group { margin-bottom: 20px; text-align: left; }
         label { display: block; font-weight: 700; text-transform: uppercase; font-size: 0.8rem; margin-bottom: 5px; }
         input {
             width: 100%;
@@ -59,34 +61,110 @@
 
         .footer-text { margin-top: 20px; font-size: 0.7rem; opacity: 0.6; text-align: center; }
 
+        /* Estilos para Resultados */
+        .status-icon { font-size: 4rem; margin-bottom: 15px; }
+        .result-title { font-family: 'Syne', sans-serif; font-size: 2rem; text-transform: uppercase; margin-bottom: 10px; }
+        
+        #success-result .result-title { color: var(--success); }
+        #error-result .result-title { color: var(--error); }
+
+        /* Contador */
+        .countdown { font-weight: 700; font-size: 1.2rem; color: var(--accent); margin-top: 10px;}
+
         @media (max-width: 768px) {
             .hero-title { font-size: 15vw; }
-            .form-card { padding: 20px; }
+            .form-card, .result-card { padding: 20px; }
         }
     </style>
 </head>
 <body>
 
-    <section>
+    <section id="main-section">
         <h1 class="hero-title">Gana un <br><span class="highlight">Full Access</span></h1>
         
-        <div class="form-card">
-            <p style="margin-bottom: 20px; font-weight: 700;">Regístrate para participar en el sorteo del próximo evento.</p>
+        <div class="form-card" id="form-container">
+            <p style="margin-bottom: 20px; font-weight: 700;">Regístrate para participar en el sorteo más esperado.</p>
             <form id="sorteoForm">
                 <div class="form-group">
                     <label>Nombre Completo</label>
-                    <input type="text" placeholder="Ej. Sandra Cassinelli" required>
+                    <input type="text" id="nombre" placeholder="Ej. Sandra Cassinelli" required>
                 </div>
                 <div class="form-group">
                     <label>WhatsApp</label>
-                    <input type="tel" placeholder="+51 ..." required>
+                    <input type="tel" id="whatsapp" placeholder="+51 ..." required>
                 </div>
-                <button type="submit" class="btn-submit">¡Quiero Ganar!</button>
+                <button type="submit" class="btn-submit">¡Quiero Participar!</button>
             </form>
+            <p class="countdown">El sorteo cierra en: <span id="timer">00:00:00</span></p>
+        </div>
+
+        <div class="result-card" id="success-result">
+            <div class="status-icon">🎉</div>
+            <h2 class="result-title">¡Participación Confirmada!</h2>
+            <p>Gracias por registrarte, <span id="confirm-name" style="font-weight: 700;"></span>.</p>
+            <p>El sorteo se realizará pronto. Te contactaremos por WhatsApp si resultas ganador(a).</p>
+            <p class="countdown" style="font-size: 1rem;">Mucha suerte</p>
+        </div>
+
+        <div class="result-card" id="error-result">
+            <div class="status-icon">❌</div>
+            <h2 class="result-title">¡Algo salió mal!</h2>
+            <p>Verifica que todos los campos estén completos.</p>
+            <p>Por favor, intenta registrarte de nuevo.</p>
         </div>
 
         <p class="footer-text">Powered by Todas las Cremas | Innovación para Productores</p>
     </section>
+
+    <script>
+        // Funcionalidad del Formulario
+        const form = document.getElementById('sorteoForm');
+        const formContainer = document.getElementById('form-container');
+        const successResult = document.getElementById('success-result');
+        const errorResult = document.getElementById('error-result');
+        const confirmNameSpan = document.getElementById('confirm-name');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita que la página se recargue
+
+            const nombreVal = document.getElementById('nombre').value;
+            const whatsappVal = document.getElementById('whatsapp').value;
+
+            // Simulación: Ocultamos formulario, mostramos resultado
+            if (nombreVal && whatsappVal) {
+                formContainer.style.display = 'none';
+                confirmNameSpan.textContent = nombreVal;
+                successResult.style.display = 'block';
+                // Aquí podrías añadir una animación de confeti
+            } else {
+                // Esto no debería pasar por el atributo 'required', pero es buena práctica
+                formContainer.style.display = 'none';
+                errorResult.style.display = 'block';
+            }
+        });
+
+        // Funcionalidad del Contador (Simulado 24h)
+        const timerSpan = document.getElementById('timer');
+        let totalSeconds = 24 * 60 * 60; // 24 horas
+
+        function updateTimer() {
+            const hours = Math.floor(totalSeconds / 3600);
+            const minutes = Math.floor((totalSeconds % 3600) / 60);
+            const seconds = totalSeconds % 60;
+
+            timerSpan.textContent = 
+                `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+            
+            if (totalSeconds > 0) {
+                totalSeconds--;
+            } else {
+                timerSpan.textContent = "¡CERRADO!";
+            }
+        }
+
+        setInterval(updateTimer, 1000); // Actualiza cada segundo
+        updateTimer(); // Llamada inicial
+    </script>
 
 </body>
 </html>
